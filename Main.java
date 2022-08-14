@@ -7,17 +7,19 @@ class Main {
     g1.addEdge(1, 0, 1);
     g1.addEdge(0, 3, 1);
     g1.addEdge(3, 0, 1);
-    //g1.addEdge(3, 4, 1); // Warning
+    // g1.addEdge(3, 4, 1); // Warning
 
+    System.out.println("\nGrafo principal ");
     System.err.println(g1);
     // System.err.println(g1.degree(0));
 
-    //System.out.println(g1.highestDegree());
-    //System.out.println(g1.lowestDegree());
+    // System.out.println(g1.highestDegree());
+    // System.out.println(g1.lowestDegree());
+    System.out.println("\nGrafo complementar ");
     System.out.println(g1.complement());
 
-    //Postar link atualizado do GIT
-    
+    // Postar link atualizado do GIT
+
   }
 
 }

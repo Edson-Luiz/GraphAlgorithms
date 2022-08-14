@@ -25,7 +25,8 @@ public class Graph {
 
   public void addEdge(int source, int sink, int weight) {
 
-    if (source < 0 || source > this.countNodes - 1 || sink < 0 || sink > this.countNodes - 1 || weight <= 0) {
+    if (source < 0 || source > this.countNodes - 1 || sink < 0 || sink > this.countNodes - 1
+    || weight <= 0) {
 
       System.out.print("\nInvalid edge: " + source + sink + weight + "\n");
       return;
@@ -112,8 +113,5 @@ public class Graph {
 
     return g2;
   }
-
-
-
 
 }
