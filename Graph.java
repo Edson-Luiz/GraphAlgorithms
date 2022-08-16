@@ -1,7 +1,7 @@
 public class Graph {
 
-  private int countNodes; //Contador de nos
-  private int countEdges; //Contador de arestas
+  private int countNodes; // Contador de nos
+  private int countEdges; // Contador de arestas
   private int[][] adjMatrix;
 
   public Graph(int countNodes) {
@@ -26,7 +26,7 @@ public class Graph {
   public void addEdge(int source, int sink, int weight) {
 
     if (source < 0 || source > this.countNodes - 1 || sink < 0 || sink > this.countNodes - 1
-    || weight <= 0) {
+        || weight <= 0) {
 
       System.out.print("\nInvalid edge: " + source + sink + weight + "\n");
       return;
@@ -69,49 +69,66 @@ public class Graph {
     return str;
   }
 
-  public int highestDegree(){
+  public int highestDegree() {
     int highest = 0;
-    
+
     for (int i = 0; i < this.adjMatrix.length; i++) {
       int degreeNodeI = this.degree(i);
-        if(degreeNodeI > highest){
-          highest = degreeNodeI;
+      if (degreeNodeI > highest) {
+        highest = degreeNodeI;
       }
-        
+
     }
-    
+
     return highest;
   }
 
-  public int lowestDegree(){
+  public int lowestDegree() {
     int lowest = this.adjMatrix.length;
-    
+
     for (int i = 0; i < this.adjMatrix.length; i++) {
       int degreeNodeI = this.degree(i);
-        if(degreeNodeI < lowest){
-          lowest = degreeNodeI;
+      if (degreeNodeI < lowest) {
+        lowest = degreeNodeI;
       }
-        
+
     }
-    
+
     return lowest;
   }
 
-  public Graph complement(){
-    Graph g2 = new Graph(this.countNodes); 
+  public Graph complement() {
+    Graph g2 = new Graph(this.countNodes);
 
     for (int i = 0; i < this.adjMatrix.length; i++) {
       for (int j = 0; j < this.adjMatrix[i].length; j++) {
-        if(this.adjMatrix[i][j] == 0 && i != j){
+        if (this.adjMatrix[i][j] == 0 && i != j) {
           g2.addEdge(i, j, 1);
-          
+
         }
-        
+
       }
-      
+
     }
 
     return g2;
+  }
+
+  public float density() {
+    return (float) this.countEdges / (this.countNodes * (this.countNodes - 1));
+  }
+
+  public boolean subGraph(Graph g2) {
+    if (g2.countNodes > this.countNodes || g2.countEdges > this.countEdges)
+      return false;
+    for(int i = 0; i < g2.adjMatrix.length; i++) {
+      for(int j = 0; j < g2.adjMatrix[i].length; j++) {
+        if(g2.adjMatrix[i][j] != 0 && this.adjMatrix[i][j] == 0)
+          return false;
+      }
+    }
+    return true;
+
   }
 
 }
