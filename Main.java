@@ -13,11 +13,19 @@ class Main {
     g1.addEdgeUnoriented(5, 6, 1);
     g1.addEdgeUnoriented(6, 8, 1);
 
-    //System.out.println(g1.bfs(7));
-    System.out.println(g1.connected());
     Graph g2 = new Graph("graph.txt");
+
+    System.out.println("\nO GRAFO É CONEXO? ");
+    System.out.println(g1.connected());
+
+    System.out.println("\nO GRAFO É ORIENTADO? ");
     System.out.println(g1.nonOriented());
+
+    System.out.println("\nPROCURA EM PROFUNDIDADE: ");
     System.out.println(g1.dfs(7));
+
+    System.out.println("\nPROCURA EM LARGURA: ");
+    System.out.println(g1.bfs(7));
 
     // Graph g1 = new Graph(4);
 
@@ -60,3 +68,22 @@ class Main {
  * retorna R
  * 
  */
+
+// PASSAR PARA O CADERNO E APAGAR!!!!!!!!!!!!!!!!
+
+/*
+ * 
+ * Bellman-Ford
+ * 
+ * -Lida com aresta negativa
+ * -Complexidade
+ * 
+ * Foyd-Warshall
+ * 
+ * -Todos os pares
+ * 
+ * 
+ * 
+ */
+
+

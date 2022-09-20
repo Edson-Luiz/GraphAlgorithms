@@ -270,4 +270,60 @@ public class Graph {
 
   }
 
+  public void dijkstra(int s) {
+
+    int dist[] = new int[this.countNodes];
+    int pred[] = new int[this.countNodes];
+    ArrayList<Integer> Q = new ArrayList<>();
+
+    dist[s] = 0;
+    Q.add(s);
+
+    while (Q.size() != 0) {
+      int u = 0;
+      Q.remove(u);
+      for (int v = 0; v < this.adjMatrix[u].length; v++) {
+        if (dist[v] > dist[u]) {
+          dist[v] = dist[u];
+          pred[u] = v;
+
+        }
+      }
+    }
+  }
+
+  public void floyd_warshall() {
+
+    int[][] dist = new int[this.countNodes][this.countEdges];
+    int[][] pred = new int[this.countNodes][this.countEdges];
+
+    for (int i = 0; i < this.getCountNodes() - 1; i++) {
+      for (int j = 0; j < this.getCountNodes() - 1; j++) {
+        if (i == j) {
+          dist[i][j] = 0;
+        } else if (this.adjMatrix[i][j] != 0) {
+          dist[i][j] = 0;
+          pred[i][j] = i;
+        } else {
+          dist[i][j] = 100000000;
+          pred[i][j] = null;
+        }
+
+      }
+    }
+    for (int i = 0; i < this.getCountNodes() - 1; i++) {
+      for (int j = 0; j < this.getCountNodes() - 1; j++) {
+        for (int k = 0; i < this.getCountNodes() - 1; k++) {
+          if (dist[i][j] > dist[i][k] + dist[k][j]) {
+            dist[i][j] = dist[i][k] + dist[k][j];
+            pred[i][j] = pred[k][j];
+          }
+        }
+      }
+    }
+
+  }
+
+  
+
 }
