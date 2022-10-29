@@ -1,12 +1,12 @@
 public class Interface {
 
-    public void menutext(){
+    public void Imenu(){
         System.out.println("-------INFORME A TAREFA-------");
         System.out.println("1 - Caminho Minimo");
         System.out.println("2 - Labirinto");
         System.out.println("3 - Sair");
       }
-      public void caminhotext(){
+      public void Icaminho(){
           System.out.println("-------CAMINHO MINIMO-------");
           System.out.println("1 - Dijkstra");
           System.out.println("2 - Bellmanford");
@@ -15,7 +15,7 @@ public class Interface {
           System.out.println("5 - Sair");
       }
   
-      public void arquivostext(){
+      public void Iarquivos(){
           System.out.println("-------ARQUIVOS-------");
           System.out.println("1 - Toy");
           System.out.println("2 - Rg_300_4730");
@@ -26,7 +26,7 @@ public class Interface {
           System.out.println("7 - SAIR");
       }
   
-      public void labirintotext(){
+      public void Ilabirinto(){
           System.out.println("-------LABIRINTO-------");
           System.out.println("1 - Maze3");
           System.out.println("2 - Maze10");
@@ -37,12 +37,12 @@ public class Interface {
           System.out.println("7 - SAIR");
       }
 
-      public void escolherInicio() {
+      public void inicio() {
         System.out.println("Digite o valor inicial");
 
       }
 
-      public void escolherFim(){
+      public void fim(){
         System.out.println("Digite o valor do fim");
       }
       

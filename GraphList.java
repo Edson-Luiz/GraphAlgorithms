@@ -313,19 +313,19 @@ public class GraphList {
     public ArrayList<Edge> kruskal() {
       ArrayList<Edge> T = new ArrayList<Edge>(this.countNodes - 1);
       int[] F = new int[this.countNodes];
-      // makeset(u)
+      
       for (int u = 0; u < this.countNodes; ++u)
           F[u] = u;
       edgeList.sort(null);
       for (int idx = 0; idx < edgeList.size(); ++idx) {
           int u = edgeList.get(idx).getSource();
           int v = edgeList.get(idx).getSink();
-          if (F[u] != F[v]) { // findset(u) != findset(v)
+          if (F[u] != F[v]) { 
               T.add(edgeList.get(idx));
-              // Save some iterations if tree is already built
+             
               if (T.size() == countNodes - 1)
                   break;
-              // union(u, v)
+              
               int k = F[v];
               for (int i = 0; i < F.length; ++i) {
                   if (F[i] == k) {
@@ -342,7 +342,6 @@ public class GraphList {
     int s = 0;
     int[] dist = new int[this.countNodes];
     int[] parent = new int[this.countNodes];
-    // Q represents the nodes that were not connected yet
     ArrayList<Integer> Q = new ArrayList<Integer>(this.countNodes);
     for (int u = 0; u < this.countNodes; ++u) {
         dist[u] = INF;
@@ -360,7 +359,7 @@ public class GraphList {
                 u = i;
             }
         }
-        // Node u is gonna be connected
+        
         Q.remove((Integer) u);
         for (int idx = 0; idx < this.adjList.get(u).size(); ++idx) {
             int v = this.adjList.get(u).get(idx).getSink();
@@ -371,7 +370,7 @@ public class GraphList {
             }
         }
     }
-    // Recover the tree from parent array
+    
     for (int u = 0; u < parent.length; ++u) {
         if (parent[u] != -1) {
             T.add(new Edge(u, parent[u], 1));
@@ -381,14 +380,13 @@ public class GraphList {
   }
 
   public ArrayList<Integer> bellmanFord(int s, int t) {
-    int[] dist = new int[this.countNodes]; // * Vetor de distancias, armazena a distancia de um vertice ate a origem
-    Integer[] path = new Integer[this.countNodes]; // * Vetor do caminho percorrido
+    int[] dist = new int[this.countNodes]; 
+    Integer[] path = new Integer[this.countNodes]; 
 
-    // * Inicializa todas as distancias como infinito
     for (int i = 0; i < this.countNodes; i++)
       dist[i] = INF;
 
-    // * Marca a distancia da origem para ela mesma como 0
+
     dist[s] = 0;
 
     for (int k = 0; k < this.countNodes - 1; k++) {
@@ -406,43 +404,33 @@ public class GraphList {
       }
     }
 
-    // * Cria um vetor para representar o caminho final
-    // * O caminho final seria percorrer o vetor de path até a origem
-    // * Começando por t, veriamos qual vertice o originou, e assim por diante
-    // * Isso possibilita seguir a "trilha" da resposta
     ArrayList<Integer> result = new ArrayList<>();
     int current = t;
 
-    // * Percorro o vetor de caminhos até encontrar a origem
     while (path[current] != null) {
       result.add(current);
       current = path[current];
     }
 
-    // * Adiciona a origem a resposta
     result.add(s);
 
-    // * Como percorremos de tras para frente, invertemos a soucao para visualizacao
     Collections.reverse(result);
 
-    // * Imprimo o caminho
     System.out.println("Caminho: " + result);
-    System.out.println("Custo: " + dist[t]); // * O custo é o vetor de distancia na posicao t, final, ja que esse
-                                             // *vetor armazena a distancia de um dado vertice até a origem
+    System.out.println("Custo: " + dist[t]);
 
     return result;
 
   }
 
   public ArrayList<Integer> bellmanFordImproved(int s, int t) {
-    int[] dist = new int[this.countNodes]; // * Vetor de distancias, armazena a distancia de um vertice ate a origem
-    Integer[] path = new Integer[this.countNodes]; // * Vetor do caminho percorrido
+    int[] dist = new int[this.countNodes]; 
+    Integer[] path = new Integer[this.countNodes]; 
 
-    // * Inicializa todas as distancias como infinito
     for (int i = 0; i < this.countNodes; i++)
       dist[i] = INF;
 
-    // * Marca a distancia da origem para ela mesma como 0
+
     dist[s] = 0;
 
     boolean flag;
@@ -467,29 +455,20 @@ public class GraphList {
         break;
     }
 
-    // * Cria um vetor para representar o caminho final
-    // * O caminho final seria percorrer o vetor de path até a origem
-    // * Começando por t, veriamos qual vertice o originou, e assim por diante
-    // * Isso possibilita seguir a "trilha" da resposta
     ArrayList<Integer> result = new ArrayList<>();
     int current = t;
 
-    // * Percorro o vetor de caminhos até encontrar a origem
     while (path[current] != null) {
       result.add(current);
       current = path[current];
     }
 
-    // * Adiciona a origem a resposta
     result.add(s);
 
-    // * Como percorremos de tras para frente, invertemos a soucao para visualizacao
     Collections.reverse(result);
 
-    // * Imprimo o caminho
     System.out.println("Caminho: " + result);
-    System.out.println("Custo: " + dist[t]); // * O custo é o vetor de distancia na posicao t, final, ja que esse
-                                             // *vetor armazena a distancia de um dado vertice até a origem
+    System.out.println("Custo: " + dist[t]); 
 
     return result;
   }
